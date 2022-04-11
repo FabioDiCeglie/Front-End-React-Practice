@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCharacters } from "../../store/Characters/actions";
@@ -11,8 +12,12 @@ export default () => {
     dispatch(fetchCharacters());
   }, [dispatch, fetchCharacters]);
 
-  const charactersByDimension = useSelector(selectCharactersByDimension);
-  console.log(charactersByDimension);
+  const charactersByDimensionAlive = useSelector(selectCharactersByDimension);
+  console.log(charactersByDimensionAlive);
+
+  if (!charactersByDimensionAlive) {
+    return "Loading";
+  }
 
   return (
     <div>

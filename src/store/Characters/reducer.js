@@ -3,7 +3,13 @@ const initialState = null;
 export default (state = initialState, action) => {
   switch (action.type) {
     case "homepage/charactersLoaded": {
-      return action.payload;
+      const filterByDimension = action.payload;
+      const charactersByDimensionAlive = filterByDimension?.map((character) => {
+        return character?.residents?.filter(
+          (resident) => resident.status === "Alive"
+        );
+      });
+      return charactersByDimensionAlive.flat();
     }
     default: {
       return state;
