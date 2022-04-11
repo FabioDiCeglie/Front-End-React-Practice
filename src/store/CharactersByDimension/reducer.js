@@ -9,7 +9,9 @@ export default (state = initialState, action) => {
           (resident) => resident.status === "Alive"
         );
       });
-      return charactersByDimensionAlive.flat();
+      const charactersByDimension = charactersByDimensionAlive.flat();
+
+      return charactersByDimension;
     }
     default: {
       return state;

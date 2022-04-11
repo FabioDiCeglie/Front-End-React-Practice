@@ -24,6 +24,7 @@ export default () => {
       {charactersByDimensionAlive?.map((character) => (
         <div key={character.id}>
           <p>Name: {character.name}</p>
+          <img src={character.image} alt={character.name} />
           <p>Species: {character.species}</p>
           <p>Gender: {character.gender}</p>
         </div>
