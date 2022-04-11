@@ -21,7 +21,14 @@ export default () => {
 
   return (
     <div>
-      <h4>All character by</h4>
+      <h4>All character by Fantasy Dimension</h4>
+      {charactersByDimensionAlive?.map((character) => (
+        <div key={character.id}>
+          <p>Name: {character.name}</p>
+          <p>Species: {character.species}</p>
+          <p>Gender: {character.gender}</p>
+        </div>
+      ))}
     </div>
   );
 };
