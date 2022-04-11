@@ -12,12 +12,12 @@ export default () => {
     dispatch(fetchCharacters());
   }, [dispatch, fetchCharacters]);
 
-  const charactersByLocationAlive = useSelector(selectCharactersByLocation);
-  console.log(charactersByLocationAlive);
+  const charactersByLocation = useSelector(selectCharactersByLocation);
+  console.log(charactersByLocation);
 
   return (
     <div>
-      <h4>Characters from location {charactersByLocationAlive?.location}:</h4>
+      <h4>Characters from location {charactersByLocation?.location}:</h4>
     </div>
   );
 };

@@ -8,14 +8,14 @@ export default (state = initialState, action) => {
         return location.name;
       });
 
-      const charactersByLocationAlive = filterByLocation?.map((character) => {
+      const charactersByLocation = filterByLocation?.map((character) => {
         return character?.residents?.filter(
           (resident) => resident.status === "Alive"
         );
       });
-      const charactersByLocation = charactersByLocationAlive.flat();
+      const charactersByLocationAlive = charactersByLocation.flat();
 
-      return { location: locationName, charactersByLocation };
+      return { location: locationName, charactersByLocationAlive };
     }
     default: {
       return state;
