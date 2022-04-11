@@ -6,7 +6,7 @@ const GET_CHARACTERS_QUERY = `query
 {results {name, type,dimension residents {id,name,status,species,gender}}}}`;
 
 const charactersLoaded = (data) => ({
-  type: "homepage/charactersLoaded",
+  type: "charactersPage/charactersLoaded",
   payload: data,
 });
 

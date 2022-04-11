@@ -1,2 +1,2 @@
 export const selectCharactersByDimension = (reduxState) =>
-  reduxState.characters;
+  reduxState.charactersByDimension;

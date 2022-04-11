@@ -1,9 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCharacters } from "../../store/Characters/actions";
+import { fetchCharacters } from "../../store/CharactersByDimension/actions";
 
-import { selectCharactersByDimension } from "../../store/Characters/selectors";
+import { selectCharactersByDimension } from "../../store/CharactersByDimension/selectors";
 
 export default () => {
   const dispatch = useDispatch();
