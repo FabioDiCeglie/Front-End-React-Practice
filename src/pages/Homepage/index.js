@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCharacters } from "../../store/Characters/actions";
 
+import { selectCharactersByDimension } from "../../store/Characters/selectors";
+
 export default () => {
   const dispatch = useDispatch();
 
@@ -9,9 +11,12 @@ export default () => {
     dispatch(fetchCharacters());
   }, [dispatch, fetchCharacters]);
 
+  const charactersByDimension = useSelector(selectCharactersByDimension);
+  console.log(charactersByDimension);
+
   return (
     <div>
-      <h1>All Characters: </h1>
+      <h4>All character by</h4>
     </div>
   );
 };

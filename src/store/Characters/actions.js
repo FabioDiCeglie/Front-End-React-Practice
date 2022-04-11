@@ -1,5 +1,9 @@
 import axios from "axios";
-import { apiUrl } from "../../config/apiClient";
+import { apiUrlGraphQl } from "../../config/apiClient";
+
+const GET_CHARACTERS_QUERY = `query 
+{locations (filter: {dimension:"Fantasy Dimension"}) 
+{results {name, type,dimension residents {name,status,species}}}}`;
 
 const charactersLoaded = (data) => ({
   type: "homepage/charactersLoaded",
@@ -9,14 +13,16 @@ const charactersLoaded = (data) => ({
 export const fetchCharacters = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `${apiUrl}/location/?dimension=Fantasy dimension`
-      );
+      const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
+        query: GET_CHARACTERS_QUERY,
+      });
 
-      if (response === null) {
+      const result = responseGraphQL.data.data;
+
+      if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(charactersLoaded(response.data));
+        dispatch(charactersLoaded(result.locations.results));
       }
     } catch (error) {
       console.log(error);
