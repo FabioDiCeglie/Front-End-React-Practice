@@ -4,14 +4,20 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case "charactersPage/charactersLoaded": {
       const filterByDimension = action.payload;
-      const charactersByDimensionAlive = filterByDimension?.map((character) => {
+
+      const dimensionName = filterByDimension.map((dimension) => {
+        return dimension.dimension;
+      });
+      const uniqueName = Array.from(new Set(dimensionName));
+
+      const charactersByDimension = filterByDimension?.map((character) => {
         return character?.residents?.filter(
           (resident) => resident.status === "Alive"
         );
       });
-      const charactersByDimension = charactersByDimensionAlive.flat();
+      const charactersByDimensionAlive = charactersByDimension.flat();
 
-      return charactersByDimension;
+      return { dimension: uniqueName, charactersByDimensionAlive };
     }
     default: {
       return state;

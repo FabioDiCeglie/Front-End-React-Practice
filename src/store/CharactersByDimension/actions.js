@@ -3,7 +3,7 @@ import { apiUrlGraphQl } from "../../config/apiClient";
 
 const GET_CHARACTERS_QUERY_BY_DIMENSION = `query 
 {locations (filter: {dimension:"Fantasy Dimension"}) 
-{results {name, type,dimension residents {id,name,status,species,gender,image}}}}`;
+{results {dimension residents {id,name,status,species,gender,image}}}}`;
 
 const charactersLoaded = (data) => ({
   type: "charactersPage/charactersLoaded",

@@ -12,16 +12,16 @@ export default () => {
     dispatch(fetchCharacters());
   }, [dispatch, fetchCharacters]);
 
-  const charactersByDimensionAlive = useSelector(selectCharactersByDimension);
+  const charactersByDimension = useSelector(selectCharactersByDimension);
 
-  if (!charactersByDimensionAlive) {
+  if (!charactersByDimension) {
     return "Loading";
   }
 
   return (
     <div>
-      <h4>All character by Fantasy Dimension</h4>
-      {charactersByDimensionAlive?.map((character) => (
+      <h4>All character by {charactersByDimension?.dimension}</h4>
+      {charactersByDimension?.charactersByDimensionAlive?.map((character) => (
         <div key={character.id}>
           <p>Name: {character.name}</p>
           <img src={character.image} alt={character.name} />

@@ -17,7 +17,7 @@ export default () => {
 
   return (
     <div>
-      <h4>Characters from location {charactersByLocationAlive.location}:</h4>
+      <h4>Characters from location {charactersByLocationAlive?.location}:</h4>
     </div>
   );
 };
