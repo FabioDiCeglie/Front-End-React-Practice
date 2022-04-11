@@ -15,6 +15,10 @@ export default () => {
   const charactersByLocation = useSelector(selectCharactersByLocation);
   console.log(charactersByLocation);
 
+  if (!charactersByLocation) {
+    return "Loading";
+  }
+
   return (
     <div>
       <h4>Characters from location {charactersByLocation?.location}:</h4>
