@@ -1,7 +1,7 @@
 import axios from "axios";
 import { apiUrlGraphQl } from "../../config/apiClient";
 
-const GET_CHARACTERS_QUERY = `query 
+const GET_CHARACTERS_QUERY_BY_DIMENSION = `query 
 {locations (filter: {dimension:"Fantasy Dimension"}) 
 {results {name, type,dimension residents {id,name,status,species,gender}}}}`;
 
@@ -14,7 +14,7 @@ export const fetchCharacters = () => {
   return async (dispatch) => {
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
-        query: GET_CHARACTERS_QUERY,
+        query: GET_CHARACTERS_QUERY_BY_DIMENSION,
       });
 
       const result = responseGraphQL.data.data;

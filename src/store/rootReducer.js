@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import charactersReducer from "./CharactersByDimension/reducer";
+import charactersByDimensionReducer from "./CharactersByDimension/reducer";
+import charactersByLocationReducer from "./CharactersByLocation/reducer";
 
 export default combineReducers({
-  charactersByDimension: charactersReducer,
+  charactersByDimension: charactersByDimensionReducer,
+  charactersByLocation: charactersByLocationReducer,
 });
