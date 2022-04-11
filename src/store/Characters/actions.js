@@ -9,7 +9,10 @@ import { apiUrl } from "../../config/apiClient";
 export const fetchCharacters = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${apiUrl}/character`);
+      const response = await axios.get(
+        `${apiUrl}/location/?dimension=Fantasy dimension`
+      );
+      console.log(response.data);
 
       if (response === null) {
         throw new Error("Failed to load products from the API");
