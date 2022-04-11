@@ -1,9 +1,15 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchCharacters } from "../../store/CharactersByLocation/actions";
 import { selectCharactersByLocation } from "../../store/CharactersByLocation/selectors";
+
+import styled from "styled-components";
+
+const Title = styled.h4`
+  color: black;
+  font-size: 30px;
+`;
 
 export default () => {
   const dispatch = useDispatch();
@@ -20,7 +26,7 @@ export default () => {
 
   return (
     <div>
-      <h4>Characters from location {charactersByLocation?.location}:</h4>
+      <Title>Characters from location {charactersByLocation?.location}:</Title>
       {charactersByLocation?.charactersByLocationAlive?.map((character) => (
         <div key={character.id}>
           <p>Name: {character.name}</p>
