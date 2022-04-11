@@ -13,7 +13,6 @@ export default () => {
   }, [dispatch, fetchCharacters]);
 
   const charactersByLocation = useSelector(selectCharactersByLocation);
-  console.log(charactersByLocation);
 
   if (!charactersByLocation) {
     return "Loading";
@@ -22,6 +21,14 @@ export default () => {
   return (
     <div>
       <h4>Characters from location {charactersByLocation?.location}:</h4>
+      {charactersByLocation?.charactersByLocationAlive?.map((character) => (
+        <div key={character.id}>
+          <p>Name: {character.name}</p>
+          <img src={character.image} alt={character.name} />
+          <p>Species: {character.species}</p>
+          <p>Gender: {character.gender}</p>
+        </div>
+      ))}
     </div>
   );
 };
