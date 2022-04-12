@@ -32,7 +32,7 @@ export default () => {
           <p>
             Species: {character.species} - Gender: {character.gender}
           </p>
-          <p>Last know location: {character.location.name}</p>
+          <p>Last known location: {character.location.name}</p>
         </div>
       ))}
     </div>

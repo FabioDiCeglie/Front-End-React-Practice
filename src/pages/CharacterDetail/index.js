@@ -31,7 +31,7 @@ export default () => {
         <p>
           Species: {characterDetail.species} - Gender: {characterDetail.gender}
         </p>
-        <p>Last know location: {characterDetail.location.name}</p>
+        <p>Last known location: {characterDetail.location.name}</p>
         <p>Dimension: {characterDetail.location.dimension}</p>
         <p>Last seen in episode: {characterDetail.episode.name}</p>
       </div>
