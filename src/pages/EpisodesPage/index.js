@@ -17,7 +17,7 @@ export default () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchEpisodes());
+    dispatch(fetchEpisodes(1));
   }, [dispatch]);
 
   const episodes = useSelector(selectEpisodes);
@@ -30,15 +30,17 @@ export default () => {
     <>
       <Title>List of all episodes:</Title>
       <WrapperButton>
-        <span style={{ color: "white", marginRight: 20 }}>More Episodes:</span>
+        <span style={{ color: "white", marginRight: 20 }}>List Episodes:</span>
         {episodes.info.prev && (
           <Button onClick={() => dispatch(fetchEpisodes(episodes.info.prev))}>
             {episodes.info.prev}
           </Button>
         )}
-        <Button onClick={() => dispatch(fetchEpisodes(episodes.info.next))}>
-          {episodes.info.next}
-        </Button>
+        {episodes.info.next && (
+          <Button onClick={() => dispatch(fetchEpisodes(episodes.info.next))}>
+            {episodes.info.next}
+          </Button>
+        )}
       </WrapperButton>
       <Wrapper>
         {episodes?.results?.map((episode) => (
