@@ -18,7 +18,6 @@ export const fetchCharacter = (id) => {
       });
 
       const result = responseGraphQL.data.data;
-      console.log(result);
 
       if (result === null) {
         throw new Error("Failed to load products from the API");
