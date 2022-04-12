@@ -16,15 +16,24 @@ export default () => {
   }, [dispatch, fetchCharacter]);
 
   const characterDetail = useSelector(selectCharacterDetail);
-  console.log(characterDetail);
 
-  //   if () {
-  //     return "Loading";
-  //   }
+  if (!characterDetail) {
+    return "Loading";
+  }
 
   return (
     <div>
-      <h4>Character Detail</h4>
+      <h4>Character Detail: {characterDetail?.name}</h4>
+      <div>
+        <p>Name: {characterDetail.name}</p>
+
+        <img src={characterDetail.image} alt={characterDetail.name} />
+        <p>
+          Species: {characterDetail.species} - Gender: {characterDetail.gender}
+        </p>
+        <p>Last know location: {characterDetail.location.name}</p>
+        <p>Last seen in: {characterDetail.episode.name}</p>
+      </div>
     </div>
   );
 };

@@ -10,7 +10,7 @@ export const fetchCharacter = (id) => {
   return async (dispatch) => {
     const GET_CHARACTERS_QUERY_BY_ID = `query 
     {character (id: ${id}) 
-    {id,name,status,species,gender,origin {id,name}location {id,name}, episode{id,name,created}}}
+    {id,name,status,species,gender,image,origin {id,name}location {id,name}, episode{id,name,created}}}
     `;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
