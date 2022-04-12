@@ -11,7 +11,6 @@ import {
   Wrapper,
   WrapperCards,
   Image,
-  WrapperCardsImages,
   WrapperCardsDescription,
 } from "../../components/components.style";
 
@@ -35,9 +34,7 @@ export default () => {
         {charactersByLocation?.charactersByLocationAliveLastSeen?.map(
           (character) => (
             <WrapperCards key={character.id}>
-              <WrapperCardsImages>
-                <Image src={character.image} alt={character.name} />
-              </WrapperCardsImages>
+              <Image src={character.image} alt={character.name} />
               <WrapperCardsDescription>
                 <NavLink
                   to={`/character/detail/${character.id}`}

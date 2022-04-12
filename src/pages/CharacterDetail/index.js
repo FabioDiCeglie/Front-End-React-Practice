@@ -6,6 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCharacter } from "../../store/CharacterDetail/actions";
 import { selectCharacterDetail } from "../../store/CharacterDetail/selectors";
 
+import {
+  Title,
+  WrapperCardCharacter,
+  ImageCharacter,
+  WrapperCardDescriptionCharacter,
+} from "../../components/components.style";
+
 export default () => {
   const { id } = useParams();
 
@@ -22,19 +29,26 @@ export default () => {
   }
 
   return (
-    <div>
-      <h4>Character Detail: {characterDetail.name}</h4>
-      <div>
-        <p>Name: {characterDetail.name}</p>
-
-        <img src={characterDetail.image} alt={characterDetail.name} />
-        <p>
-          Species: {characterDetail.species} - Gender: {characterDetail.gender}
-        </p>
-        <p>Last known location: {characterDetail.location.name}</p>
-        <p>Dimension: {characterDetail.location.dimension}</p>
-        <p>Last seen in episode: {characterDetail.episode.name}</p>
-      </div>
-    </div>
+    <>
+      <Title>Character Detail: {characterDetail.name}</Title>
+      <WrapperCardCharacter>
+        <ImageCharacter
+          src={characterDetail.image}
+          alt={characterDetail.name}
+        />
+        <WrapperCardDescriptionCharacter>
+          <p>Species:</p>
+          {characterDetail.species}
+          <p>Gender:</p>
+          {characterDetail.gender}
+          <p>Last known location:</p>
+          {characterDetail.location.name}
+          <p>Dimension:</p>
+          {characterDetail.location.dimension}
+          <p>Last seen in episode: </p>
+          {characterDetail.episode.name}
+        </WrapperCardDescriptionCharacter>
+      </WrapperCardCharacter>
+    </>
   );
 };

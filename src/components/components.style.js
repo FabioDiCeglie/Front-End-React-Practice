@@ -27,15 +27,7 @@ export const WrapperCards = styled.div`
   border-radius: 20px;
   display: flex;
   width: 500px;
-  color: white;
   margin: 5px;
-`;
-
-export const WrapperCardsImages = styled.div`
-  margin: 5px;
-  border-radius: 10px;
-  display: flex;
-  color: white;
 `;
 
 export const WrapperCardsDescription = styled.div`
@@ -52,6 +44,30 @@ export const WrapperCardsDescription = styled.div`
   }
   p {
     font-size: 12px;
+    color: grey;
+  }
+`;
+
+export const WrapperCardCharacter = styled.div`
+  border-radius: 20px;
+  display: flex;
+  width: 800px;
+  padding: 2%;
+`;
+
+export const ImageCharacter = styled.img`
+  width: 600px;
+  height: 600px;
+  border-radius: 10%;
+`;
+
+export const WrapperCardDescriptionCharacter = styled.div`
+  color: black;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  p {
+    font-size: 16px;
     color: grey;
   }
 `;
