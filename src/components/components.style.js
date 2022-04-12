@@ -32,8 +32,6 @@ export const WrapperCards = styled.div`
 
 export const WrapperCardsDescription = styled.div`
   color: white;
-  display: flex;
-  flex-direction: column;
   padding: 2%;
   h4 {
     font-size: 20px;
@@ -63,8 +61,6 @@ export const ImageCharacter = styled.img`
 
 export const WrapperCardDescriptionCharacter = styled.div`
   color: black;
-  display: flex;
-  flex-direction: column;
   padding: 2%;
   p {
     font-size: 16px;

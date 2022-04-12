@@ -2,10 +2,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-
 import { fetchCharacters } from "../../store/CharactersByEpisode/actions";
 import { selectCharactersByEpisode } from "../../store/CharactersByEpisode/selectors";
-
 import {
   Title,
   Wrapper,

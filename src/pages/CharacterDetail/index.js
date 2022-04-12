@@ -2,10 +2,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { fetchCharacter } from "../../store/CharacterDetail/actions";
 import { selectCharacterDetail } from "../../store/CharacterDetail/selectors";
-
 import {
   Title,
   WrapperCardCharacter,
@@ -44,7 +42,9 @@ export default () => {
           <p>Last known location:</p>
           {characterDetail.location.name}
           <p>Dimension:</p>
-          {characterDetail.location.dimension}
+          {characterDetail.location.dimension === "unknown"
+            ? "Any dimension"
+            : characterDetail.location.dimension}
           <p>Last seen in episode: </p>
           {characterDetail.episode.name}
         </WrapperCardDescriptionCharacter>
