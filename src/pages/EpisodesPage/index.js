@@ -2,13 +2,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { fetchEpisodes } from "../../store/Episodes/actions";
 
 export default () => {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  //   useEffect(() => {
-  //     dispatch();
-  //   }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchEpisodes());
+  }, [dispatch]);
 
   //   if () {
   //     return "Loading";

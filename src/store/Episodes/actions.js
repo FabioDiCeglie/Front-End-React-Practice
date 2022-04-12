@@ -23,7 +23,7 @@ results{id,name,episode}}}
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(episodesLoaded(result));
+        dispatch(episodesLoaded(result.episodes.results));
       }
     } catch (error) {
       console.log(error);
