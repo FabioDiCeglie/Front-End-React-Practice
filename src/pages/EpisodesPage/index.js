@@ -22,6 +22,12 @@ export default () => {
   return (
     <>
       <h1>List of all episodes:</h1>
+      {episodes?.map((episode) => (
+        <div key={episode.id}>
+          <p>{episode.episode}</p>
+          <p>{episode.name}</p>
+        </div>
+      ))}
     </>
   );
 };
