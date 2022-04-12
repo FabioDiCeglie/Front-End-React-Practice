@@ -6,13 +6,6 @@ import { Link } from "react-router-dom";
 import { fetchCharacters } from "../../store/CharactersByLocation/actions";
 import { selectCharactersByLocation } from "../../store/CharactersByLocation/selectors";
 
-import styled from "styled-components";
-
-const Title = styled.h4`
-  color: black;
-  font-size: 30px;
-`;
-
 export default () => {
   const dispatch = useDispatch();
 
@@ -28,7 +21,7 @@ export default () => {
 
   return (
     <div>
-      <Title>Characters from location {charactersByLocation?.location}:</Title>
+      <h2>Characters from location {charactersByLocation?.location}:</h2>
       {charactersByLocation?.charactersByLocationAliveLastSeen?.map(
         (character) => (
           <div key={character.id}>
