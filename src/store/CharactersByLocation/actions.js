@@ -3,7 +3,7 @@ import { apiUrlGraphQl } from "../../config/apiClient";
 
 const GET_CHARACTERS_QUERY_BY_LOCATION = `query 
 {locations (filter: {name:"Citadel of Ricks"}) 
-{results {name,residents {id,name,status,species,gender,image}}}}`;
+{results {name,residents {id,name,status,species,gender,image,episode{id,name,created}}}}}`;
 
 const charactersLoaded = (data) => ({
   type: "locationPage/charactersLoaded",

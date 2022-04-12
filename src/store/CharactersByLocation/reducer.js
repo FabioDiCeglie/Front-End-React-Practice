@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 const initialState = null;
 
 export default (state = initialState, action) => {
@@ -15,7 +16,20 @@ export default (state = initialState, action) => {
       });
       const charactersByLocationAlive = charactersByLocation.flat();
 
-      return { location: locationName, charactersByLocationAlive };
+      const charactersByLocationAliveLastSeen = charactersByLocationAlive.map(
+        (character) => {
+          const checkCharacterEpisodes = character.episode.reduce(function (
+            prev,
+            current
+          ) {
+            return prev.created > current.created ? prev : current;
+          });
+
+          return { ...character, episode: checkCharacterEpisodes };
+        }
+      );
+
+      return { location: locationName, charactersByLocationAliveLastSeen };
     }
     default: {
       return state;
