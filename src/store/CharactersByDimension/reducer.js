@@ -17,7 +17,20 @@ export default (state = initialState, action) => {
       });
       const charactersByDimensionAlive = charactersByDimension.flat();
 
-      return { dimension: uniqueName, charactersByDimensionAlive };
+      const charactersByDimensionAliveLastSeen = charactersByDimensionAlive.map(
+        (character) => {
+          const checkCharacterEpisodes = character.episode.reduce(function (
+            prev,
+            current
+          ) {
+            return prev.created > current.created ? prev : current;
+          });
+
+          return { ...character, episode: checkCharacterEpisodes };
+        }
+      );
+
+      return { dimension: uniqueName, charactersByDimensionAliveLastSeen };
     }
     default: {
       return state;

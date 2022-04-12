@@ -20,7 +20,6 @@ export default () => {
   }, [dispatch, fetchCharacters]);
 
   const charactersByLocation = useSelector(selectCharactersByLocation);
-  console.log(charactersByLocation);
 
   if (!charactersByLocation) {
     return "Loading";
