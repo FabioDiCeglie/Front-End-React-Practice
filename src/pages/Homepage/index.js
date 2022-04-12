@@ -4,15 +4,12 @@ import Img from "./Rick-Morty.png";
 
 const Image = styled.img`
   width: 100%;
-  height: 80%;
 `;
 
 export default () => {
   return (
     <>
-      <div>
-        <Image src={Img} />
-      </div>
+      <Image src={Img} />
     </>
   );
 };
