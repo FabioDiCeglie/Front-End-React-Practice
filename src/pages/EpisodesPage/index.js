@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 export default () => {
-  const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch();
-  }, [dispatch]);
+  //   useEffect(() => {
+  //     dispatch();
+  //   }, [dispatch]);
 
   //   if () {
   //     return "Loading";

@@ -6,6 +6,9 @@ export default () => {
       <Button as="a" href="/">
         Homepage
       </Button>
+      <Button as="a" href="/episodes">
+        Episodes
+      </Button>
       <Button as="a" href="/characters/dimension">
         Characters in one dimension
       </Button>
