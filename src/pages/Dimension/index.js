@@ -30,7 +30,7 @@ export default () => {
 
   return (
     <>
-      <Title>{charactersByDimension?.dimension} characters</Title>
+      <Title>{charactersByDimension?.dimension} characters:</Title>
       <Wrapper>
         {charactersByDimension?.charactersByDimensionAliveLastSeen?.map(
           (character) => (
@@ -43,20 +43,16 @@ export default () => {
                   to={`/character/detail/${character.id}`}
                   style={{ textDecoration: "none", color: "white" }}
                 >
-                  <p>{character.name}</p>
+                  <h4>{character.name}</h4>
                 </NavLink>
-                <p>
-                  Species: {character.species} Gender: {character.gender}
-                </p>
-                <p>
-                  Last known location:
-                  <br />
-                  {character.location.name}
-                </p>
-                <p>
-                  Last seen in episode:
-                  <br /> {character.episode.name}
-                </p>
+                <p>Species: </p>
+                {character.species}
+                <p>Gender: </p>
+                {character.gender}
+                <p>Last known location:</p>
+                {character.location.name}
+                <p>Last seen in episode:</p>
+                {character.episode.name}
               </WrapperCardsDescription>
             </WrapperCards>
           )

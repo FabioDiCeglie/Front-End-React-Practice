@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   background: black;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 3%;
 `;
 
@@ -26,7 +26,7 @@ export const WrapperCards = styled.div`
   background: rgb(54, 54, 54);
   border-radius: 20px;
   display: flex;
-  width: 400px;
+  width: 500px;
   color: white;
   margin: 5px;
 `;
@@ -42,6 +42,16 @@ export const WrapperCardsDescription = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
-  font-size: 11px;
   padding: 2%;
+  h4 {
+    font-size: 20px;
+
+    &:hover {
+      color: orange;
+    }
+  }
+  p {
+    font-size: 12px;
+    color: grey;
+  }
 `;

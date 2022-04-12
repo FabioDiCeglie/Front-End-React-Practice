@@ -43,16 +43,14 @@ export default () => {
                   to={`/character/detail/${character.id}`}
                   style={{ textDecoration: "none", color: "white" }}
                 >
-                  <p>{character.name}</p>
+                  <h4>{character.name}</h4>
                 </NavLink>
-                <p>
-                  Species: {character.species} <br />
-                  Gender: {character.gender}
-                </p>
-                <p>
-                  Last seen in episode: <br />
-                  {character.episode.name}
-                </p>
+                <p>Species: </p>
+                {character.species}
+                <p>Gender: </p>
+                {character.gender}
+                <p>Last seen in episode:</p>
+                {character.episode.name}
               </WrapperCardsDescription>
             </WrapperCards>
           )
