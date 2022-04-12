@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchCharacters } from "../../store/CharactersByEpisode/actions";
+import { selectCharactersByEpisode } from "../../store/CharactersByEpisode/selectors";
 
 export default () => {
   const dispatch = useDispatch();
@@ -10,6 +11,8 @@ export default () => {
   useEffect(() => {
     dispatch(fetchCharacters());
   }, [dispatch, fetchCharacters]);
+
+  const charactersByEpisode = useSelector(selectCharactersByEpisode);
 
   return (
     <div>

@@ -3,7 +3,7 @@ import { apiUrlGraphQl } from "../../config/apiClient";
 
 const GET_CHARACTERS_QUERY_BY_EPISODE = `query 
 {episode (id: 28) 
-{id,name,characters {id,name,status,species,gender,location {id,name}, episode{id,name,created}}}}
+{id,name,characters {id,name,status,species,gender,location {id,name}}}}
 `;
 
 const charactersLoaded = (data) => ({
@@ -19,7 +19,6 @@ export const fetchCharacters = () => {
       });
 
       const result = responseGraphQL.data.data;
-      console.log(result);
 
       if (result === null) {
         throw new Error("Failed to load products from the API");

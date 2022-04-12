@@ -1,2 +1,2 @@
-export const selectCharactersByDimension = (reduxState) =>
+export const selectCharactersByEpisode = (reduxState) =>
   reduxState.charactersByEpisode;
