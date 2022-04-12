@@ -11,7 +11,7 @@ export const fetchEpisodes = () => {
     const GET_EPISODES_QUERY = `query 
 {episodes(page:1)
 {
-results{id,name,episode}}}
+results{id,name,episode,air_date}}}
 `;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {

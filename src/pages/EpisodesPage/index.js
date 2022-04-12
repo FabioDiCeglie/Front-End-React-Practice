@@ -4,6 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { fetchEpisodes } from "../../store/Episodes/actions";
 import { selectEpisodes } from "../../store/Episodes/selectors";
+import {
+  Title,
+  Wrapper,
+  WrapperCardsDescription,
+} from "../../components/components.style";
 
 export default () => {
   const dispatch = useDispatch();
@@ -21,13 +26,16 @@ export default () => {
 
   return (
     <>
-      <h1>List of all episodes:</h1>
-      {episodes?.map((episode) => (
-        <div key={episode.id}>
-          <p>{episode.episode}</p>
-          <p>{episode.name}</p>
-        </div>
-      ))}
+      <Title>List of all episodes:</Title>
+      <Wrapper>
+        {episodes?.map((episode) => (
+          <WrapperCardsDescription key={episode.id}>
+            <h4>{episode.name}</h4>
+            <p>Episode: {episode.episode}</p>
+            <p>Date: {episode.air_date}</p>
+          </WrapperCardsDescription>
+        ))}
+      </Wrapper>
     </>
   );
 };
