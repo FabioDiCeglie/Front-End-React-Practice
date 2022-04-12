@@ -9,6 +9,8 @@ import {
   Wrapper,
   WrapperCards,
   WrapperCardsDescription,
+  WrapperButton,
+  Button,
 } from "../../components/components.style";
 
 export default () => {
@@ -28,8 +30,11 @@ export default () => {
   return (
     <>
       <Title>List of all episodes:</Title>
-      {episodes.info.prev && <button>{episodes.info.prev}</button>}
-      <button>{episodes.info.next}</button>
+      <WrapperButton>
+        <span style={{ color: "white", marginRight: 20 }}>More Episodes:</span>
+        {episodes.info.prev && <Button>{episodes.info.prev}</Button>}
+        <Button>{episodes.info.next}</Button>
+      </WrapperButton>
       <Wrapper>
         {episodes?.results?.map((episode) => (
           <WrapperCards key={episode.id}>

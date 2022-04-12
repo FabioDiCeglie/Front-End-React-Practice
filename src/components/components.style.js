@@ -67,3 +67,18 @@ export const WrapperCardDescriptionCharacter = styled.div`
     color: grey;
   }
 `;
+
+export const WrapperButton = styled.div`
+  background: black;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1%;
+`;
+
+export const Button = styled.button`
+  color: white;
+  background: rgb(54, 54, 54);
+  margin-right: 5%;
+  border-radius: 20px;
+  border: 0;
+`;
