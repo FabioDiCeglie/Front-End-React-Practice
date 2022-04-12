@@ -43,7 +43,7 @@ export default () => {
                   to={`/character/detail/${character.id}`}
                   style={{ textDecoration: "none", color: "white" }}
                 >
-                  {character.name}
+                  <p>{character.name}</p>
                 </NavLink>
                 <p>
                   Species: {character.species} Gender: {character.gender}
