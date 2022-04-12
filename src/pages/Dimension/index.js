@@ -13,6 +13,7 @@ export default () => {
   }, [dispatch, fetchCharacters]);
 
   const charactersByDimension = useSelector(selectCharactersByDimension);
+  console.log(charactersByDimension);
 
   if (!charactersByDimension) {
     return "Loading";
@@ -25,8 +26,11 @@ export default () => {
         <div key={character.id}>
           <p>Name: {character.name}</p>
           <img src={character.image} alt={character.name} />
-          <p>Species: {character.species}</p>
-          <p>Gender: {character.gender}</p>
+          <p>
+            Species: {character.species} - Gender: {character.gender}
+          </p>
+          <p>Last know location: {character.location.name}</p>
+          <p>First seen in: {character.episode.map((ep) => ep.name)}</p>
         </div>
       ))}
     </div>
