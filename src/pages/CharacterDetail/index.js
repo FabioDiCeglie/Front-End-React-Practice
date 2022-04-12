@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchCharacter } from "../../store/CharacterDetail/actions";
+import { selectCharacterDetail } from "../../store/CharacterDetail/selectors";
 
 export default () => {
   const { id } = useParams();
@@ -13,6 +14,9 @@ export default () => {
   useEffect(() => {
     dispatch(fetchCharacter(id));
   }, [dispatch, fetchCharacter]);
+
+  const characterDetail = useSelector(selectCharacterDetail);
+  console.log(characterDetail);
 
   //   if () {
   //     return "Loading";
