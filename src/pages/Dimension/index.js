@@ -25,15 +25,16 @@ export default () => {
       {charactersByDimension?.charactersByDimensionAliveLastSeen?.map(
         (character) => (
           <div key={character.id}>
+            <p>Name:</p>
             <Link to={`/character/detail/${character.id}`}>
-              <p>Name: {character.name}</p>
+              <p>{character.name}</p>
             </Link>
             <img src={character.image} alt={character.name} />
             <p>
               Species: {character.species} - Gender: {character.gender}
             </p>
             <p>Last know location: {character.location.name}</p>
-            <p>Last seen in: {character.episode.name}</p>
+            <p>Last seen in episode: {character.episode.name}</p>
           </div>
         )
       )}

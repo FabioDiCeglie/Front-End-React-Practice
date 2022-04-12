@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { fetchCharacters } from "../../store/CharactersByLocation/actions";
 import { selectCharactersByLocation } from "../../store/CharactersByLocation/selectors";
@@ -31,11 +32,14 @@ export default () => {
       {charactersByLocation?.charactersByLocationAliveLastSeen?.map(
         (character) => (
           <div key={character.id}>
-            <p>Name: {character.name}</p>
+            <p>Name:</p>
+            <Link to={`/character/detail/${character.id}`}>
+              <p>{character.name}</p>
+            </Link>
             <img src={character.image} alt={character.name} />
             <p>Species: {character.species}</p>
             <p>Gender: {character.gender}</p>
-            <p>Last seen in: {character.episode.name}</p>
+            <p>Last seen in episode: {character.episode.name}</p>
           </div>
         )
       )}
