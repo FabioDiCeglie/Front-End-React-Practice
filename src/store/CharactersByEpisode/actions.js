@@ -2,7 +2,7 @@ import axios from "axios";
 import { apiUrlGraphQl } from "../../config/apiClient";
 
 const GET_CHARACTERS_QUERY_BY_EPISODE = `query 
-{episode (id: 28) 
+{episode (id: 22) 
 {id,name,characters {id,name,status,species,gender,image,location {id,name}}}}
 `;
 
