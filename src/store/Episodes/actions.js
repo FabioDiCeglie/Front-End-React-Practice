@@ -6,10 +6,10 @@ const episodesLoaded = (data) => ({
   payload: data,
 });
 
-export const fetchEpisodes = () => {
+export const fetchEpisodes = (pageNumber) => {
   return async (dispatch) => {
     const GET_EPISODES_QUERY = `query 
-{episodes(page:2)
+{episodes(page:${pageNumber})
 {info{next,prev}
 results{id,name,episode,air_date}}}
 `;

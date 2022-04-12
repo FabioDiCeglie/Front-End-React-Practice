@@ -21,7 +21,6 @@ export default () => {
   }, [dispatch]);
 
   const episodes = useSelector(selectEpisodes);
-  console.log(episodes);
 
   if (!episodes) {
     return "Loading";
@@ -32,8 +31,14 @@ export default () => {
       <Title>List of all episodes:</Title>
       <WrapperButton>
         <span style={{ color: "white", marginRight: 20 }}>More Episodes:</span>
-        {episodes.info.prev && <Button>{episodes.info.prev}</Button>}
-        <Button>{episodes.info.next}</Button>
+        {episodes.info.prev && (
+          <Button onClick={() => dispatch(fetchEpisodes(episodes.info.prev))}>
+            {episodes.info.prev}
+          </Button>
+        )}
+        <Button onClick={() => dispatch(fetchEpisodes(episodes.info.next))}>
+          {episodes.info.next}
+        </Button>
       </WrapperButton>
       <Wrapper>
         {episodes?.results?.map((episode) => (
