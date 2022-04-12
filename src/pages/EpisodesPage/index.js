@@ -7,6 +7,7 @@ import { selectEpisodes } from "../../store/Episodes/selectors";
 import {
   Title,
   Wrapper,
+  WrapperCards,
   WrapperCardsDescription,
 } from "../../components/components.style";
 
@@ -27,13 +28,19 @@ export default () => {
   return (
     <>
       <Title>List of all episodes:</Title>
+      {episodes.info.prev && <button>{episodes.info.prev}</button>}
+      <button>{episodes.info.next}</button>
       <Wrapper>
-        {episodes?.map((episode) => (
-          <WrapperCardsDescription key={episode.id}>
-            <h4>{episode.name}</h4>
-            <p>Episode: {episode.episode}</p>
-            <p>Date: {episode.air_date}</p>
-          </WrapperCardsDescription>
+        {episodes?.results?.map((episode) => (
+          <WrapperCards key={episode.id}>
+            <WrapperCardsDescription>
+              <h4>{episode.name}</h4>
+              <p>Episode: </p>
+              {episode.episode}
+              <p>Date: </p>
+              {episode.air_date}
+            </WrapperCardsDescription>
+          </WrapperCards>
         ))}
       </Wrapper>
     </>

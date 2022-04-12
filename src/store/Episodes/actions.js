@@ -9,8 +9,8 @@ const episodesLoaded = (data) => ({
 export const fetchEpisodes = () => {
   return async (dispatch) => {
     const GET_EPISODES_QUERY = `query 
-{episodes(page:1)
-{
+{episodes(page:2)
+{info{next,prev}
 results{id,name,episode,air_date}}}
 `;
     try {
@@ -23,7 +23,7 @@ results{id,name,episode,air_date}}}
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(episodesLoaded(result.episodes.results));
+        dispatch(episodesLoaded(result.episodes));
       }
     } catch (error) {
       console.log(error);
