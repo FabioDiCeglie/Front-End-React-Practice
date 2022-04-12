@@ -19,11 +19,12 @@ export const fetchCharacters = () => {
       });
 
       const result = responseGraphQL.data.data;
+      console.log(result);
 
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(charactersLoaded(result.episode.characters));
+        dispatch(charactersLoaded(result.episode));
       }
     } catch (error) {
       console.log(error);

@@ -2,8 +2,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { fetchCharacters } from "../../store/CharactersByEpisode/actions";
+
 export default () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCharacters());
+  }, [dispatch, fetchCharacters]);
 
   return (
     <div>
