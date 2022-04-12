@@ -14,9 +14,13 @@ export default () => {
 
   const charactersByEpisode = useSelector(selectCharactersByEpisode);
 
+  if (!charactersByEpisode) {
+    return "Loading";
+  }
+
   return (
     <div>
-      <h4>All character by episode: {charactersByEpisode.episode} </h4>
+      <h4>All character by episode: {charactersByEpisode?.episode} </h4>
       {charactersByEpisode?.charactersByEpisodeAlive?.map((character) => (
         <div key={character.id}>
           <p>Name: {character.name}</p>
