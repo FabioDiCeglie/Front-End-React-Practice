@@ -23,7 +23,7 @@ export const fetchCharacter = (id) => {
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(characterLoaded(result));
+        dispatch(characterLoaded(result.character));
       }
     } catch (error) {
       console.log(error);
