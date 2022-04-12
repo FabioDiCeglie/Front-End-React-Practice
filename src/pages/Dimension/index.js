@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { fetchCharacters } from "../../store/CharactersByDimension/actions";
 import { selectCharactersByDimension } from "../../store/CharactersByDimension/selectors";
@@ -24,7 +25,9 @@ export default () => {
       {charactersByDimension?.charactersByDimensionAliveLastSeen?.map(
         (character) => (
           <div key={character.id}>
-            <p>Name: {character.name}</p>
+            <Link to={`/character/detail/${character.id}`}>
+              <p>Name: {character.name}</p>
+            </Link>
             <img src={character.image} alt={character.name} />
             <p>
               Species: {character.species} - Gender: {character.gender}
