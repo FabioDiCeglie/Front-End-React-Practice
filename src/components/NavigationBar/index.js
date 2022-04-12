@@ -1,20 +1,4 @@
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  background: black;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Button = styled.button`
-  color: white;
-  font-size: 20px;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 0px solid black;
-  border-radius: 3px;
-  text-decoration: none;
-`;
+import { Button, Wrapper } from "./navigation.style";
 
 export default () => {
   return (
