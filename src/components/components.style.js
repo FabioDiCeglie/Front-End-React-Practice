@@ -11,7 +11,7 @@ export const Title = styled.h2`
 export const Image = styled.img`
   width: 200px;
   height: 200px;
-  border-radius: 5%;
+  border-radius: 10%;
 `;
 
 export const Wrapper = styled.div`
@@ -42,6 +42,6 @@ export const WrapperCardsDescription = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
-  font-size: 10px;
+  font-size: 11px;
   padding: 2%;
 `;

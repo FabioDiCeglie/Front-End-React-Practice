@@ -1,10 +1,19 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { fetchCharacters } from "../../store/CharactersByLocation/actions";
 import { selectCharactersByLocation } from "../../store/CharactersByLocation/selectors";
+
+import {
+  Title,
+  Wrapper,
+  WrapperCards,
+  Image,
+  WrapperCardsImages,
+  WrapperCardsDescription,
+} from "../../components/components.style";
 
 export default () => {
   const dispatch = useDispatch();
@@ -20,22 +29,34 @@ export default () => {
   }
 
   return (
-    <div>
-      <h2>Characters from location {charactersByLocation?.location}:</h2>
-      {charactersByLocation?.charactersByLocationAliveLastSeen?.map(
-        (character) => (
-          <div key={character.id}>
-            <p>Name:</p>
-            <Link to={`/character/detail/${character.id}`}>
-              <p>{character.name}</p>
-            </Link>
-            <img src={character.image} alt={character.name} />
-            <p>Species: {character.species}</p>
-            <p>Gender: {character.gender}</p>
-            <p>Last seen in episode: {character.episode.name}</p>
-          </div>
-        )
-      )}
-    </div>
+    <>
+      <Title>{charactersByLocation?.location} characters:</Title>
+      <Wrapper>
+        {charactersByLocation?.charactersByLocationAliveLastSeen?.map(
+          (character) => (
+            <WrapperCards key={character.id}>
+              <WrapperCardsImages>
+                <Image src={character.image} alt={character.name} />
+              </WrapperCardsImages>
+              <WrapperCardsDescription>
+                <NavLink
+                  to={`/character/detail/${character.id}`}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  {character.name}
+                </NavLink>
+                <p>
+                  Species: {character.species} Gender: {character.gender}
+                </p>
+                <p>
+                  Last seen in episode: <br />
+                  {character.episode.name}
+                </p>
+              </WrapperCardsDescription>
+            </WrapperCards>
+          )
+        )}
+      </Wrapper>
+    </>
   );
 };

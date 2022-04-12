@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { fetchCharacters } from "../../store/CharactersByDimension/actions";
 import { selectCharactersByDimension } from "../../store/CharactersByDimension/selectors";
@@ -39,9 +39,12 @@ export default () => {
                 <Image src={character.image} alt={character.name} />
               </WrapperCardsImages>
               <WrapperCardsDescription>
-                <Link to={`/character/detail/${character.id}`}>
+                <NavLink
+                  to={`/character/detail/${character.id}`}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
                   {character.name}
-                </Link>
+                </NavLink>
                 <p>
                   Species: {character.species} Gender: {character.gender}
                 </p>
