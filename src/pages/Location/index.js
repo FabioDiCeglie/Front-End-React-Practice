@@ -6,7 +6,10 @@ import {
   fetchCharacters,
   fetchLocations,
 } from "../../store/CharactersByLocation/actions";
-import { selectCharactersByLocation } from "../../store/CharactersByLocation/selectors";
+import {
+  selectCharactersByLocation,
+  selectLocations,
+} from "../../store/CharactersByLocation/selectors";
 import {
   Title,
   Wrapper,
@@ -24,6 +27,8 @@ export default () => {
   }, [dispatch, fetchCharacters]);
 
   const charactersByLocation = useSelector(selectCharactersByLocation);
+  const locations = useSelector(selectLocations);
+  console.log(locations);
 
   if (!charactersByLocation) {
     return "Loading";
