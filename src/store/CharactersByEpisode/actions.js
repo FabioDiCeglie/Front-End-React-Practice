@@ -29,3 +29,34 @@ export const fetchCharacters = () => {
     }
   };
 };
+
+const episodesLoaded = (data) => ({
+  type: "episodePage/episodesLoaded",
+  payload: data,
+});
+
+export const fetchEpisodes = () => {
+  return async (dispatch) => {
+    const GET_EPISODES = `query 
+    {episodes{
+      results{
+       name
+      }
+    } }`;
+    try {
+      const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
+        query: GET_EPISODES,
+      });
+
+      const result = responseGraphQL.data.data;
+
+      if (result === null) {
+        throw new Error("Failed to load products from the API");
+      } else {
+        dispatch(episodesLoaded(result.locations.results));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

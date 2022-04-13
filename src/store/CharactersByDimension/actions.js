@@ -36,7 +36,7 @@ const dimensionsLoaded = (data) => ({
 
 export const fetchDimensions = () => {
   return async (dispatch) => {
-    const GET_LOCATION = `query 
+    const GET_DIMENSIONS = `query 
     {locations{
       results{
         dimension
@@ -44,7 +44,7 @@ export const fetchDimensions = () => {
     } }`;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
-        query: GET_LOCATION,
+        query: GET_DIMENSIONS,
       });
 
       const result = responseGraphQL.data.data;

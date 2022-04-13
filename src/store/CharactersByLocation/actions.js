@@ -36,7 +36,7 @@ const locationsLoaded = (data) => ({
 
 export const fetchLocations = () => {
   return async (dispatch) => {
-    const GET_LOCATION = `query 
+    const GET_LOCATIONS = `query 
     {locations{
       results{
         name
@@ -44,7 +44,7 @@ export const fetchLocations = () => {
     } }`;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
-        query: GET_LOCATION,
+        query: GET_LOCATIONS,
       });
 
       const result = responseGraphQL.data.data;

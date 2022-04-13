@@ -27,7 +27,7 @@ export default () => {
 
   return (
     <>
-      <Title>Episode {charactersByEpisode?.episode} characters:</Title>
+      <Title>Characters by episodes:</Title>
       <Wrapper>
         {charactersByEpisode?.charactersByEpisodeAlive?.map((character) => (
           <WrapperCards key={character.id}>
