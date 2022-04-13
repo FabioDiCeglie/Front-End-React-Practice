@@ -1,5 +1,5 @@
 export const selectCharactersByLocation = (reduxState) =>
-  reduxState.charactersByLocation;
+  reduxState.charactersByLocation.charactersByLocationAliveLastSeen;
 
 export const selectLocations = (reduxState) =>
   reduxState.charactersByLocation.locations;

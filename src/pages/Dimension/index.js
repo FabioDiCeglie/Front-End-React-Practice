@@ -36,7 +36,7 @@ export default () => {
     return "Loading";
   }
 
-  if (charactersByDimension?.charactersByDimensionAliveLastSeen?.length === 0) {
+  if (charactersByDimension?.length === 0) {
     return (
       <>
         <Title>Characters by dimensions:</Title>
@@ -75,29 +75,27 @@ export default () => {
       </Form>
 
       <Wrapper>
-        {charactersByDimension?.charactersByDimensionAliveLastSeen?.map(
-          (character) => (
-            <WrapperCards key={character.id}>
-              <Image src={character.image} alt={character.name} />
-              <WrapperCardsDescription>
-                <NavLink
-                  to={`/character/detail/${character.id}`}
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  <h4>{character.name}</h4>
-                </NavLink>
-                <p>Species: </p>
-                {character.species}
-                <p>Gender: </p>
-                {character.gender}
-                <p>Last known location:</p>
-                {character.location.name}
-                <p>Last seen in episode:</p>
-                {character.episode.name}
-              </WrapperCardsDescription>
-            </WrapperCards>
-          )
-        )}
+        {charactersByDimension?.map((character) => (
+          <WrapperCards key={character.id}>
+            <Image src={character.image} alt={character.name} />
+            <WrapperCardsDescription>
+              <NavLink
+                to={`/character/detail/${character.id}`}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <h4>{character.name}</h4>
+              </NavLink>
+              <p>Species: </p>
+              {character.species}
+              <p>Gender: </p>
+              {character.gender}
+              <p>Last known location:</p>
+              {character.location.name}
+              <p>Last seen in episode:</p>
+              {character.episode.name}
+            </WrapperCardsDescription>
+          </WrapperCards>
+        ))}
       </Wrapper>
     </>
   );

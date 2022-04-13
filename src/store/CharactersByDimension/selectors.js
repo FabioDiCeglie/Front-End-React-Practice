@@ -1,5 +1,5 @@
 export const selectCharactersByDimension = (reduxState) =>
-  reduxState.charactersByDimension;
+  reduxState.charactersByDimension.charactersByDimensionAliveLastSeen;
 
 export const selectDimensions = (reduxState) =>
   reduxState.charactersByDimension.dimensions;
