@@ -41,7 +41,7 @@ export default () => {
       <>
         <Title>Characters by dimensions:</Title>
         <Form>
-          <label style={{ color: "white" }}>Choose a location:</label>
+          <label style={{ color: "white" }}>Choose a dimension:</label>
           <select
             onChange={(e) => setDimension(e.target.value)}
             value={dimension}
@@ -62,7 +62,7 @@ export default () => {
       <Title>Characters by dimensions:</Title>
 
       <Form>
-        <label style={{ color: "white" }}>Choose a location:</label>
+        <label style={{ color: "white" }}>Choose a dimension:</label>
         <select
           onChange={(e) => setDimension(e.target.value)}
           value={dimension}

@@ -1,35 +1,57 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { fetchCharacters } from "../../store/CharactersByEpisode/actions";
-import { selectCharactersByEpisode } from "../../store/CharactersByEpisode/selectors";
+import {
+  fetchCharacters,
+  fetchEpisodes,
+} from "../../store/CharactersByEpisode/actions";
+import {
+  selectCharactersByEpisode,
+  selectEpisodes,
+} from "../../store/CharactersByEpisode/selectors";
 import {
   Title,
   Wrapper,
   WrapperCards,
   Image,
   WrapperCardsDescription,
+  Form,
 } from "../../components/components.style";
 
 export default () => {
+  const [episode, setEpisode] = useState(21);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCharacters());
-  }, [dispatch, fetchCharacters]);
+    dispatch(fetchEpisodes());
+    dispatch(fetchCharacters(episode));
+  }, [dispatch, episode, fetchCharacters, fetchEpisodes]);
 
   const charactersByEpisode = useSelector(selectCharactersByEpisode);
+  const episodes = useSelector(selectEpisodes);
 
-  if (!charactersByEpisode) {
+  if (!charactersByEpisode && !episodes) {
     return "Loading";
   }
 
   return (
     <>
       <Title>Characters by episodes:</Title>
+
+      <Form>
+        <label style={{ color: "white" }}>Choose episode:</label>
+        <select onChange={(e) => setEpisode(e.target.value)} value={episode}>
+          {episodes?.map((episode) => (
+            <option key={episode.id} value={episode.id}>
+              {episode.name}
+            </option>
+          ))}
+        </select>
+        )
+      </Form>
       <Wrapper>
-        {charactersByEpisode?.charactersByEpisodeAlive?.map((character) => (
+        {charactersByEpisode?.map((character) => (
           <WrapperCards key={character.id}>
             <Image src={character.image} alt={character.name} />
             <WrapperCardsDescription>

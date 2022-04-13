@@ -6,10 +6,10 @@ const charactersLoaded = (data) => ({
   payload: data,
 });
 
-export const fetchCharacters = () => {
+export const fetchCharacters = (episode) => {
   return async (dispatch) => {
     const GET_CHARACTERS_QUERY_BY_EPISODE = `query 
-    {episode (id: 22) 
+    {episode (id:${episode}) 
     {id,name,characters {id,name,status,species,gender,image,location {id,name}}}}
     `;
     try {
@@ -38,8 +38,9 @@ const episodesLoaded = (data) => ({
 export const fetchEpisodes = () => {
   return async (dispatch) => {
     const GET_EPISODES = `query 
-    {episodes{
+    {episodes(page: 2){
       results{
+        id
        name
       }
     } }`;
@@ -53,7 +54,7 @@ export const fetchEpisodes = () => {
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(episodesLoaded(result.locations.results));
+        dispatch(episodesLoaded(result.episodes.results));
       }
     } catch (error) {
       console.log(error);

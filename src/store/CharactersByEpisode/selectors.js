@@ -1,2 +1,5 @@
 export const selectCharactersByEpisode = (reduxState) =>
-  reduxState.charactersByEpisode;
+  reduxState.charactersByEpisode.charactersByEpisodeAlive;
+
+export const selectEpisodes = (reduxState) =>
+  reduxState.charactersByEpisode.episodes;

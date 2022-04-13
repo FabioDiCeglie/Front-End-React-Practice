@@ -15,6 +15,11 @@ export default (state = initialState, action) => {
       );
       return { ...state, charactersByEpisodeAlive };
     }
+
+    case "episodePage/episodesLoaded": {
+      const episodes = action.payload;
+      return { ...state, episodes: episodes };
+    }
     default: {
       return state;
     }
