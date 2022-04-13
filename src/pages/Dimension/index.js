@@ -1,37 +1,57 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
   fetchCharacters,
   fetchDimensions,
 } from "../../store/CharactersByDimension/actions";
-import { selectCharactersByDimension } from "../../store/CharactersByDimension/selectors";
+import {
+  selectCharactersByDimension,
+  selectDimensions,
+} from "../../store/CharactersByDimension/selectors";
 import {
   Title,
   Wrapper,
   WrapperCards,
   Image,
   WrapperCardsDescription,
+  Form,
 } from "../../components/components.style";
 
 export default () => {
+  const [dimension, setDimension] = useState("Dimension C-137");
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchDimensions());
-    dispatch(fetchCharacters());
-  }, [dispatch, fetchCharacters, fetchDimensions]);
+    dispatch(fetchCharacters(dimension));
+  }, [dispatch, dimension, fetchCharacters, fetchDimensions]);
 
   const charactersByDimension = useSelector(selectCharactersByDimension);
+  const dimensions = useSelector(selectDimensions);
 
-  if (!charactersByDimension) {
+  if (!charactersByDimension && !dimensions) {
     return "Loading";
   }
 
   return (
     <>
       <Title>Characters by dimensions:</Title>
+
+      <Form>
+        <label style={{ color: "white" }}>Choose a location:</label>
+        <select
+          onChange={(e) => setDimension(e.target.value)}
+          value={dimension}
+        >
+          {dimensions?.map((dimension, i) => (
+            <option key={i}>{dimension.dimension}</option>
+          ))}
+        </select>
+        )
+      </Form>
+
       <Wrapper>
         {charactersByDimension?.charactersByDimensionAliveLastSeen?.map(
           (character) => (

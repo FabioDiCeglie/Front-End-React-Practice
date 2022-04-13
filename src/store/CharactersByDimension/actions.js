@@ -6,10 +6,10 @@ const charactersLoaded = (data) => ({
   payload: data,
 });
 
-export const fetchCharacters = () => {
+export const fetchCharacters = (dimension) => {
   return async (dispatch) => {
     const GET_CHARACTERS_QUERY_BY_DIMENSION = `query 
-    {locations (filter: {dimension:"Fantasy Dimension"}) 
+    {locations (filter: {dimension:"${dimension}"}) 
     {results {dimension residents {id,name,status,species,gender,image, location {id,name}, episode{id,name,created}}}}}`;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {

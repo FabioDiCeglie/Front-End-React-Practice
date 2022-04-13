@@ -32,7 +32,7 @@ export default () => {
   const charactersByLocation = useSelector(selectCharactersByLocation);
   const locations = useSelector(selectLocations);
 
-  if (!charactersByLocation) {
+  if (!charactersByLocation && !locations) {
     return "Loading";
   }
 
