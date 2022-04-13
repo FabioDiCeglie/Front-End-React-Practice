@@ -59,7 +59,7 @@ export const ImageCharacter = styled.img`
 `;
 
 export const WrapperCardDescriptionCharacter = styled.div`
-  color: black;
+  color: white;
   padding: 2%;
   p {
     font-size: 16px;
@@ -85,11 +85,16 @@ export const Form = styled.form`
   padding: 3%;
   label {
     color: white;
+    margin-left: 6%;
   }
   select {
     background: rgb(54, 54, 54);
     color: white;
     border: 0;
     margin-left: 2%;
+    font-size: 15px;
+    &:hover {
+      color: orange;
+    }
   }
 `;

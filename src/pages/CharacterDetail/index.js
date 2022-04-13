@@ -35,6 +35,8 @@ export default () => {
           alt={characterDetail.name}
         />
         <WrapperCardDescriptionCharacter>
+          <p>Status:</p>
+          {characterDetail.status}
           <p>Species:</p>
           {characterDetail.species}
           <p>Gender:</p>
