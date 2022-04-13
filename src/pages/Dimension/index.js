@@ -36,30 +36,9 @@ export default () => {
     return "Loading";
   }
 
-  if (charactersByDimension?.length === 0) {
-    return (
-      <>
-        <Title>Characters by dimensions:</Title>
-        <Form>
-          <label style={{ color: "white" }}>Choose a dimension:</label>
-          <select
-            onChange={(e) => setDimension(e.target.value)}
-            value={dimension}
-          >
-            {dimensions?.map((dimension, i) => (
-              <option key={i}>{dimension}</option>
-            ))}
-          </select>
-          )
-        </Form>
-        <Title>No characters alive in this dimension</Title>
-      </>
-    );
-  }
-
   return (
     <>
-      <Title>Characters by dimensions:</Title>
+      <Title>Characters alive by dimensions:</Title>
 
       <Form>
         <label style={{ color: "white" }}>Choose a dimension:</label>
@@ -75,6 +54,9 @@ export default () => {
       </Form>
 
       <Wrapper>
+        {charactersByDimension?.length === 0 && (
+          <Title>No characters alive in this dimension</Title>
+        )}
         {charactersByDimension?.map((character) => (
           <WrapperCards key={character.id}>
             <Image src={character.image} alt={character.name} />

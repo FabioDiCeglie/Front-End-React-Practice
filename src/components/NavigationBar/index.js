@@ -10,13 +10,13 @@ export default () => {
         Episodes
       </Button>
       <Button as="a" href="/characters/dimension">
-        Characters in dimensions
+        Characters by dimensions
       </Button>
       <Button as="a" href="/characters/location">
-        Characters in locations
+        Characters by locations
       </Button>
       <Button as="a" href="/characters/episode">
-        Characters in episodes
+        Characters by episodes
       </Button>
     </Wrapper>
   );

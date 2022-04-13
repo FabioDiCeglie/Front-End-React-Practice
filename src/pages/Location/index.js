@@ -36,31 +36,9 @@ export default () => {
     return "Loading";
   }
 
-  if (charactersByLocation?.length === 0) {
-    return (
-      <>
-        <Title>Characters by location:</Title>
-
-        <Form>
-          <label style={{ color: "white" }}>Choose a location:</label>
-          <select
-            onChange={(e) => setLocation(e.target.value)}
-            value={location}
-          >
-            {locations?.map((location, i) => (
-              <option key={i}>{location.name}</option>
-            ))}
-          </select>
-          )
-        </Form>
-        <Title>No characters alive in this location.</Title>
-      </>
-    );
-  }
-
   return (
     <>
-      <Title>Characters by location:</Title>
+      <Title>Characters alive by location:</Title>
 
       <Form>
         <label style={{ color: "white" }}>Choose a location:</label>
@@ -73,6 +51,9 @@ export default () => {
       </Form>
 
       <Wrapper>
+        {charactersByLocation?.length === 0 && (
+          <Title>No characters alive in this location.</Title>
+        )}
         {charactersByLocation?.map((character) => (
           <WrapperCards key={character.id}>
             <Image src={character.image} alt={character.name} />

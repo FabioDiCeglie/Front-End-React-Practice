@@ -37,7 +37,7 @@ export default () => {
 
   return (
     <>
-      <Title>Characters by episodes:</Title>
+      <Title>Characters alive by episodes:</Title>
 
       <Form>
         <label style={{ color: "white" }}>Choose episode:</label>
