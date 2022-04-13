@@ -1,7 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { fetchEpisodes } from "../../store/Episodes/actions";
 import { selectEpisodes } from "../../store/Episodes/selectors";
 import {
@@ -30,15 +29,15 @@ export default () => {
     <>
       <Title>List of all episodes:</Title>
       <WrapperButton>
-        <span style={{ color: "white", marginRight: 20 }}>List Episodes:</span>
+        <span style={{ color: "white", marginRight: 20 }}>List episodes:</span>
         {episodes.info.prev && (
           <Button onClick={() => dispatch(fetchEpisodes(episodes.info.prev))}>
-            {episodes.info.prev}
+            Prev
           </Button>
         )}
         {episodes.info.next && (
           <Button onClick={() => dispatch(fetchEpisodes(episodes.info.next))}>
-            {episodes.info.next}
+            Next
           </Button>
         )}
       </WrapperButton>
