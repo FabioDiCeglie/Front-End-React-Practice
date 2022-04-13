@@ -19,14 +19,14 @@ import {
 } from "../../components/components.style";
 
 export default () => {
-  const [location, setLocation] = useState();
-  console.log(location);
+  const [location, setLocation] = useState("Earth (C-137)");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCharacters());
     dispatch(fetchLocations());
-  }, [dispatch, fetchCharacters]);
+    dispatch(fetchCharacters(location));
+  }, [dispatch, location, fetchCharacters, fetchLocations]);
 
   const charactersByLocation = useSelector(selectCharactersByLocation);
   const locations = useSelector(selectLocations);
@@ -41,11 +41,12 @@ export default () => {
 
       <form>
         <label>Choose a location:</label>
-        <select onChange={(e) => setLocation(e.target.value)}>
-          {locations?.map((location) => (
-            <option>{location.name}</option>
+        <select onChange={(e) => setLocation(e.target.value)} value={location}>
+          {locations?.map((location, i) => (
+            <option key={i}>{location.name}</option>
           ))}
         </select>
+        )
       </form>
 
       <Wrapper>

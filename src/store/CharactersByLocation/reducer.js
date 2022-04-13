@@ -31,7 +31,10 @@ export default (state = initialState, action) => {
         }
       );
 
-      return { ...state, charactersByLocationAliveLastSeen };
+      return {
+        ...state,
+        charactersByLocationAliveLastSeen,
+      };
     }
     case "locationPage/locationsLoaded": {
       return { ...state, locations: action.payload };

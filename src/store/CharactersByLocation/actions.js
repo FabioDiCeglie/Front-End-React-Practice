@@ -6,10 +6,10 @@ const charactersLoaded = (data) => ({
   payload: data,
 });
 
-export const fetchCharacters = () => {
+export const fetchCharacters = (location) => {
   return async (dispatch) => {
     const GET_CHARACTERS_QUERY_BY_LOCATION = `query 
-    {locations (filter: {name:"Citadel of Ricks"}) 
+    {locations (filter: {name:"${location}"}) 
     {results {name,residents {id,name,status,species,gender,image,episode{id,name,created}}}}}`;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
