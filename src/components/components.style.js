@@ -5,7 +5,7 @@ export const Title = styled.h2`
   text-align: center;
   background: black;
   color: white;
-  margin: 0;
+  margin-top: 3%;
 `;
 
 export const Image = styled.img`

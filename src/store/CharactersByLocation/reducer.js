@@ -17,12 +17,11 @@ export default (state = initialState, action) => {
 
       const charactersByLocationAliveLastSeen = charactersByLocationAlive.map(
         (character) => {
-          const checkCharacterEpisodes = character.episode.reduce(function (
-            prev,
-            current
-          ) {
-            return prev.created > current.created ? prev : current;
-          });
+          const checkCharacterEpisodes = character.episode.reduce(
+            (prev, current) => {
+              return prev.created > current.created ? prev : current;
+            }
+          );
 
           return { ...character, episode: checkCharacterEpisodes };
         }

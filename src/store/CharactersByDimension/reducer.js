@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 const initialState = {
   dimensions: null,
 };
@@ -16,12 +17,11 @@ export default (state = initialState, action) => {
 
       const charactersByDimensionAliveLastSeen = charactersByDimensionAlive.map(
         (character) => {
-          const checkCharacterEpisodes = character.episode.reduce(function (
-            prev,
-            current
-          ) {
-            return prev.created > current.created ? prev : current;
-          });
+          const checkCharacterEpisodes = character.episode.reduce(
+            (prev, current) => {
+              return prev.created > current.created ? prev : current;
+            }
+          );
 
           return { ...character, episode: checkCharacterEpisodes };
         }
@@ -31,9 +31,9 @@ export default (state = initialState, action) => {
     }
     case "dimensionPage/dimensionsLoaded": {
       const dimensions = action.payload;
-      const filterDimensions = dimensions.filter(
-        (dimension) => dimension.dimension !== "unknown"
-      );
+      const filterDimensions = dimensions.filter((dimension) => {
+        return dimension.dimension !== "unknown";
+      });
 
       const dimensionsUnique = [
         ...new Set(filterDimensions.map((tag) => tag.dimension)),

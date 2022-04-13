@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 const initialState = null;
 
 export default (state = initialState, action) => {

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 const initialState = null;
 
 export default (state = initialState, action) => {
@@ -5,12 +6,11 @@ export default (state = initialState, action) => {
     case "characterDetailPage/characterLoaded": {
       const characterDetail = action.payload;
 
-      const lastSeenEpisode = characterDetail.episode.reduce(function (
-        prev,
-        current
-      ) {
-        return prev.created > current.created ? prev : current;
-      });
+      const lastSeenEpisode = characterDetail.episode.reduce(
+        (prev, current) => {
+          return prev.created > current.created ? prev : current;
+        }
+      );
 
       return { ...characterDetail, episode: lastSeenEpisode };
     }
