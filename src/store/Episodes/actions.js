@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiUrlGraphQl } from "../../config/apiClient";
+import { apiUrlGraphQl, getAllEpisodes } from "../../config/apiClient";
 
 const episodesLoaded = (data) => ({
   type: "episodesPage/episodesLoaded",
@@ -8,14 +8,9 @@ const episodesLoaded = (data) => ({
 
 export const fetchEpisodes = (pageNumber) => {
   return async (dispatch) => {
-    const GET_EPISODES_QUERY = `query 
-{episodes(page:${pageNumber})
-{info{next,prev}
-results{id,name,episode,air_date}}}
-`;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
-        query: GET_EPISODES_QUERY,
+        query: getAllEpisodes(pageNumber),
       });
 
       const result = responseGraphQL.data.data;

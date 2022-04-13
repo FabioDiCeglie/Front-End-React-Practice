@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiUrlGraphQl } from "../../config/apiClient";
+import { apiUrlGraphQl, getDetailCharacter } from "../../config/apiClient";
 
 const characterLoaded = (data) => ({
   type: "characterDetailPage/characterLoaded",
@@ -8,13 +8,9 @@ const characterLoaded = (data) => ({
 
 export const fetchCharacter = (id) => {
   return async (dispatch) => {
-    const GET_CHARACTERS_QUERY_BY_ID = `query 
-    {character (id: ${id}) 
-    {id,name,status,species,gender,image,origin {id,name}location {id,name,dimension}, episode{id,name,created}}}
-    `;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
-        query: GET_CHARACTERS_QUERY_BY_ID,
+        query: getDetailCharacter(id),
       });
 
       const result = responseGraphQL.data.data.character;

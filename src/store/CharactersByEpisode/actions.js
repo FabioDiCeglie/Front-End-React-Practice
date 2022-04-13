@@ -1,5 +1,9 @@
 import axios from "axios";
-import { apiUrlGraphQl } from "../../config/apiClient";
+import {
+  apiUrlGraphQl,
+  getCharactersByEpisodes,
+  getEpisodes,
+} from "../../config/apiClient";
 
 const charactersLoaded = (data) => ({
   type: "episodePage/charactersLoaded",
@@ -8,13 +12,9 @@ const charactersLoaded = (data) => ({
 
 export const fetchCharacters = (episode) => {
   return async (dispatch) => {
-    const GET_CHARACTERS_QUERY_BY_EPISODE = `query 
-    {episode (id:${episode}) 
-    {id,name,characters {id,name,status,species,gender,image,location {id,name}}}}
-    `;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
-        query: GET_CHARACTERS_QUERY_BY_EPISODE,
+        query: getCharactersByEpisodes(episode),
       });
 
       const result = responseGraphQL.data.data.episode;
@@ -37,16 +37,9 @@ const episodesLoaded = (data) => ({
 
 export const fetchEpisodes = () => {
   return async (dispatch) => {
-    const GET_EPISODES = `query 
-    {episodes(page: 2){
-      results{
-        id
-       name
-      }
-    } }`;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
-        query: GET_EPISODES,
+        query: getEpisodes,
       });
 
       const result = responseGraphQL.data.data.episodes.results;

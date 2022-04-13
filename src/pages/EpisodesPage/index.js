@@ -28,6 +28,7 @@ export default () => {
   return (
     <>
       <Title>List of all episodes:</Title>
+
       <WrapperButton>
         <span style={{ color: "white", marginRight: 20 }}>List episodes:</span>
         {episodes.info.prev && (
@@ -41,6 +42,7 @@ export default () => {
           </Button>
         )}
       </WrapperButton>
+
       <Wrapper>
         {episodes?.results?.map((episode) => (
           <WrapperCards key={episode.id}>

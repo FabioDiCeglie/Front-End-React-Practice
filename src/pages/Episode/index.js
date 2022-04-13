@@ -50,6 +50,7 @@ export default () => {
         </select>
         )
       </Form>
+
       <Wrapper>
         {charactersByEpisode?.map((character) => (
           <WrapperCards key={character.id}>

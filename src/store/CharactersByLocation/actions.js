@@ -1,5 +1,9 @@
 import axios from "axios";
-import { apiUrlGraphQl } from "../../config/apiClient";
+import {
+  apiUrlGraphQl,
+  getCharactersByLocations,
+  getLocations,
+} from "../../config/apiClient";
 
 const charactersLoaded = (data) => ({
   type: "locationPage/charactersLoaded",
@@ -8,12 +12,9 @@ const charactersLoaded = (data) => ({
 
 export const fetchCharacters = (location) => {
   return async (dispatch) => {
-    const GET_CHARACTERS_QUERY_BY_LOCATION = `query 
-    {locations (filter: {name:"${location}"}) 
-    {results {name,residents {id,name,status,species,gender,image,episode{id,name,created}}}}}`;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
-        query: GET_CHARACTERS_QUERY_BY_LOCATION,
+        query: getCharactersByLocations(location),
       });
 
       const result = responseGraphQL.data.data.locations.results;
@@ -36,15 +37,9 @@ const locationsLoaded = (data) => ({
 
 export const fetchLocations = () => {
   return async (dispatch) => {
-    const GET_LOCATIONS = `query 
-    {locations{
-      results{
-        name
-      }
-    } }`;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
-        query: GET_LOCATIONS,
+        query: getLocations,
       });
 
       const result = responseGraphQL.data.data.locations.results;
