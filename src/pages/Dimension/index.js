@@ -21,6 +21,7 @@ import {
 
 export default () => {
   const [dimension, setDimension] = useState("Dimension C-137");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,6 +36,29 @@ export default () => {
     return "Loading";
   }
 
+  const dimensionsUnique = [...new Set(dimensions.map((tag) => tag.dimension))];
+
+  if (charactersByDimension?.charactersByDimensionAliveLastSeen?.length === 0) {
+    return (
+      <>
+        <Title>Characters by dimensions:</Title>
+        <Form>
+          <label style={{ color: "white" }}>Choose a location:</label>
+          <select
+            onChange={(e) => setDimension(e.target.value)}
+            value={dimension}
+          >
+            {dimensionsUnique?.map((dimension, i) => (
+              <option key={i}>{dimension}</option>
+            ))}
+          </select>
+          )
+        </Form>
+        <Title>No Characters in this dimension</Title>
+      </>
+    );
+  }
+
   return (
     <>
       <Title>Characters by dimensions:</Title>
@@ -45,8 +69,8 @@ export default () => {
           onChange={(e) => setDimension(e.target.value)}
           value={dimension}
         >
-          {dimensions?.map((dimension, i) => (
-            <option key={i}>{dimension.dimension}</option>
+          {dimensionsUnique?.map((dimension, i) => (
+            <option key={i}>{dimension}</option>
           ))}
         </select>
         )
