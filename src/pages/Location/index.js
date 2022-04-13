@@ -36,6 +36,28 @@ export default () => {
     return "Loading";
   }
 
+  if (charactersByLocation?.charactersByLocationAliveLastSeen?.length === 0) {
+    return (
+      <>
+        <Title>Characters by location:</Title>
+
+        <Form>
+          <label style={{ color: "white" }}>Choose a location:</label>
+          <select
+            onChange={(e) => setLocation(e.target.value)}
+            value={location}
+          >
+            {locations?.map((location, i) => (
+              <option key={i}>{location.name}</option>
+            ))}
+          </select>
+          )
+        </Form>
+        <Title>No characters alive in this location.</Title>
+      </>
+    );
+  }
+
   return (
     <>
       <Title>Characters by location:</Title>
