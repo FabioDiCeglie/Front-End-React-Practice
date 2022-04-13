@@ -15,7 +15,6 @@ export const Image = styled.img`
 `;
 
 export const Wrapper = styled.div`
-  background: black;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -69,7 +68,6 @@ export const WrapperCardDescriptionCharacter = styled.div`
 `;
 
 export const WrapperButton = styled.div`
-  background: black;
   display: flex;
   justify-content: flex-end;
   padding: 1%;
@@ -84,6 +82,14 @@ export const Button = styled.button`
 `;
 
 export const Form = styled.form`
-  background: black;
   padding: 3%;
+  label {
+    color: white;
+  }
+  select {
+    background: rgb(54, 54, 54);
+    color: white;
+    border: 0;
+    margin-left: 2%;
+  }
 `;

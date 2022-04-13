@@ -40,7 +40,7 @@ export default () => {
       <Title>Characters alive by episodes:</Title>
 
       <Form>
-        <label style={{ color: "white" }}>Choose episode:</label>
+        <label>Choose episode:</label>
         <select onChange={(e) => setEpisode(e.target.value)} value={episode}>
           {episodes?.map((episode) => (
             <option key={episode.id} value={episode.id}>

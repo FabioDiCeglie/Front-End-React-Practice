@@ -41,7 +41,7 @@ export default () => {
       <Title>Characters alive by location:</Title>
 
       <Form>
-        <label style={{ color: "white" }}>Choose a location:</label>
+        <label>Choose a location:</label>
         <select onChange={(e) => setLocation(e.target.value)} value={location}>
           {locations?.map((location, i) => (
             <option key={i}>{location.name}</option>

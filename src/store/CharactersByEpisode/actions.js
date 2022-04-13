@@ -17,12 +17,12 @@ export const fetchCharacters = (episode) => {
         query: GET_CHARACTERS_QUERY_BY_EPISODE,
       });
 
-      const result = responseGraphQL.data.data;
+      const result = responseGraphQL.data.data.episode;
 
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(charactersLoaded(result.episode));
+        dispatch(charactersLoaded(result));
       }
     } catch (error) {
       console.log(error);
@@ -49,12 +49,12 @@ export const fetchEpisodes = () => {
         query: GET_EPISODES,
       });
 
-      const result = responseGraphQL.data.data;
+      const result = responseGraphQL.data.data.episodes.results;
 
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(episodesLoaded(result.episodes.results));
+        dispatch(episodesLoaded(result));
       }
     } catch (error) {
       console.log(error);

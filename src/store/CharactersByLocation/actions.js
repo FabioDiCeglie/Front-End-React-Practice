@@ -16,12 +16,12 @@ export const fetchCharacters = (location) => {
         query: GET_CHARACTERS_QUERY_BY_LOCATION,
       });
 
-      const result = responseGraphQL.data.data;
+      const result = responseGraphQL.data.data.locations.results;
 
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(charactersLoaded(result.locations.results));
+        dispatch(charactersLoaded(result));
       }
     } catch (error) {
       console.log(error);
@@ -47,12 +47,12 @@ export const fetchLocations = () => {
         query: GET_LOCATIONS,
       });
 
-      const result = responseGraphQL.data.data;
+      const result = responseGraphQL.data.data.locations.results;
 
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(locationsLoaded(result.locations.results));
+        dispatch(locationsLoaded(result));
       }
     } catch (error) {
       console.log(error);

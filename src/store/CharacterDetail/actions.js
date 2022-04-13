@@ -17,12 +17,12 @@ export const fetchCharacter = (id) => {
         query: GET_CHARACTERS_QUERY_BY_ID,
       });
 
-      const result = responseGraphQL.data.data;
+      const result = responseGraphQL.data.data.character;
 
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(characterLoaded(result.character));
+        dispatch(characterLoaded(result));
       }
     } catch (error) {
       console.log(error);

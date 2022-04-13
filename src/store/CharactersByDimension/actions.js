@@ -16,12 +16,12 @@ export const fetchCharacters = (dimension) => {
         query: GET_CHARACTERS_QUERY_BY_DIMENSION,
       });
 
-      const result = responseGraphQL.data.data;
+      const result = responseGraphQL.data.data.locations.results;
 
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(charactersLoaded(result.locations.results));
+        dispatch(charactersLoaded(result));
       }
     } catch (error) {
       console.log(error);
@@ -47,12 +47,12 @@ export const fetchDimensions = () => {
         query: GET_DIMENSIONS,
       });
 
-      const result = responseGraphQL.data.data;
+      const result = responseGraphQL.data.data.locations.results;
 
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(dimensionsLoaded(result.locations.results));
+        dispatch(dimensionsLoaded(result));
       }
     } catch (error) {
       console.log(error);
