@@ -36,8 +36,6 @@ export default () => {
     return "Loading";
   }
 
-  const dimensionsUnique = [...new Set(dimensions.map((tag) => tag.dimension))];
-
   if (charactersByDimension?.charactersByDimensionAliveLastSeen?.length === 0) {
     return (
       <>
@@ -48,13 +46,13 @@ export default () => {
             onChange={(e) => setDimension(e.target.value)}
             value={dimension}
           >
-            {dimensionsUnique?.map((dimension, i) => (
+            {dimensions?.map((dimension, i) => (
               <option key={i}>{dimension}</option>
             ))}
           </select>
           )
         </Form>
-        <Title>No Characters in this dimension</Title>
+        <Title>No characters alive in this dimension</Title>
       </>
     );
   }
@@ -69,7 +67,7 @@ export default () => {
           onChange={(e) => setDimension(e.target.value)}
           value={dimension}
         >
-          {dimensionsUnique?.map((dimension, i) => (
+          {dimensions?.map((dimension, i) => (
             <option key={i}>{dimension}</option>
           ))}
         </select>

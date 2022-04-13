@@ -35,9 +35,13 @@ export default (state = initialState, action) => {
         (dimension) => dimension.dimension !== "unknown"
       );
 
+      const dimensionsUnique = [
+        ...new Set(filterDimensions.map((tag) => tag.dimension)),
+      ];
+
       return {
         ...state,
-        dimensions: filterDimensions,
+        dimensions: dimensionsUnique,
       };
     }
     default: {
