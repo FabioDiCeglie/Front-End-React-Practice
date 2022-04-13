@@ -71,13 +71,18 @@ export const WrapperButton = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 1%;
+  span {
+    color: white;
+    margin-right: 3%;
+  }
 `;
 
 export const Button = styled.button`
   color: white;
   background: rgb(54, 54, 54);
   margin-right: 5%;
-  border-radius: 20px;
+  border-radius: 15px;
+  width: 50px;
   border: 0;
 `;
 
