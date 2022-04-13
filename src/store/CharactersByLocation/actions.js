@@ -52,7 +52,7 @@ export const fetchLocations = () => {
       if (result === null) {
         throw new Error("Failed to load products from the API");
       } else {
-        dispatch(charactersLoaded(result.locations.results));
+        dispatch(locationsLoaded(result.locations.results));
       }
     } catch (error) {
       console.log(error);

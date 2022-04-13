@@ -1,5 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
-const initialState = null;
+const initialState = {
+  locations: null,
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -29,7 +31,10 @@ export default (state = initialState, action) => {
         }
       );
 
-      return { location: locationName, charactersByLocationAliveLastSeen };
+      return { ...state, charactersByLocationAliveLastSeen };
+    }
+    case "locationPage/locationsLoaded": {
+      return { ...state, locations: action.payload };
     }
     default: {
       return state;
