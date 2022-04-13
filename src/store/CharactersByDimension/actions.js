@@ -28,3 +28,34 @@ export const fetchCharacters = () => {
     }
   };
 };
+
+const dimensionsLoaded = (data) => ({
+  type: "locationPage/locationsLoaded",
+  payload: data,
+});
+
+export const fetchDimensions = () => {
+  return async (dispatch) => {
+    const GET_LOCATION = `query 
+    {locations{
+      results{
+        dimension
+      }
+    } }`;
+    try {
+      const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
+        query: GET_LOCATION,
+      });
+
+      const result = responseGraphQL.data.data;
+
+      if (result === null) {
+        throw new Error("Failed to load products from the API");
+      } else {
+        dispatch(dimensionsLoaded(result.locations.results));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

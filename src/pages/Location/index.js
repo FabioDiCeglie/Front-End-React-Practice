@@ -16,6 +16,7 @@ import {
   WrapperCards,
   Image,
   WrapperCardsDescription,
+  Form,
 } from "../../components/components.style";
 
 export default () => {
@@ -39,15 +40,15 @@ export default () => {
     <>
       <Title>Characters by location:</Title>
 
-      <form>
-        <label>Choose a location:</label>
+      <Form>
+        <label style={{ color: "white" }}>Choose a location:</label>
         <select onChange={(e) => setLocation(e.target.value)} value={location}>
           {locations?.map((location, i) => (
             <option key={i}>{location.name}</option>
           ))}
         </select>
         )
-      </form>
+      </Form>
 
       <Wrapper>
         {charactersByLocation?.charactersByLocationAliveLastSeen?.map(

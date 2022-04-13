@@ -82,3 +82,8 @@ export const Button = styled.button`
   border-radius: 20px;
   border: 0;
 `;
+
+export const Form = styled.form`
+  background: black;
+  padding: 3%;
+`;
