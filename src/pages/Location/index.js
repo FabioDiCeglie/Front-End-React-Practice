@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
@@ -19,6 +19,8 @@ import {
 } from "../../components/components.style";
 
 export default () => {
+  const [location, setLocation] = useState();
+  console.log(location);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +30,6 @@ export default () => {
 
   const charactersByLocation = useSelector(selectCharactersByLocation);
   const locations = useSelector(selectLocations);
-  console.log(locations);
 
   if (!charactersByLocation) {
     return "Loading";
@@ -36,7 +37,17 @@ export default () => {
 
   return (
     <>
-      <Title>{charactersByLocation?.location} characters:</Title>
+      <Title>Characters by location:</Title>
+
+      <form>
+        <label>Choose a location:</label>
+        <select onChange={(e) => setLocation(e.target.value)}>
+          {locations?.map((location) => (
+            <option>{location.name}</option>
+          ))}
+        </select>
+      </form>
+
       <Wrapper>
         {charactersByLocation?.charactersByLocationAliveLastSeen?.map(
           (character) => (
