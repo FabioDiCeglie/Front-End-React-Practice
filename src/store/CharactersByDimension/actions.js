@@ -1,10 +1,6 @@
 import axios from "axios";
 import { apiUrlGraphQl } from "../../config/apiClient";
 
-const GET_CHARACTERS_QUERY_BY_DIMENSION = `query 
-{locations (filter: {dimension:"Fantasy Dimension"}) 
-{results {dimension residents {id,name,status,species,gender,image, location {id,name}, episode{id,name,created}}}}}`;
-
 const charactersLoaded = (data) => ({
   type: "charactersPage/charactersLoaded",
   payload: data,
@@ -12,6 +8,9 @@ const charactersLoaded = (data) => ({
 
 export const fetchCharacters = () => {
   return async (dispatch) => {
+    const GET_CHARACTERS_QUERY_BY_DIMENSION = `query 
+    {locations (filter: {dimension:"Fantasy Dimension"}) 
+    {results {dimension residents {id,name,status,species,gender,image, location {id,name}, episode{id,name,created}}}}}`;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
         query: GET_CHARACTERS_QUERY_BY_DIMENSION,

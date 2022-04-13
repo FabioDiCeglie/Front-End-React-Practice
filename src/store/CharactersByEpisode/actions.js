@@ -1,11 +1,6 @@
 import axios from "axios";
 import { apiUrlGraphQl } from "../../config/apiClient";
 
-const GET_CHARACTERS_QUERY_BY_EPISODE = `query 
-{episode (id: 22) 
-{id,name,characters {id,name,status,species,gender,image,location {id,name}}}}
-`;
-
 const charactersLoaded = (data) => ({
   type: "episodePage/charactersLoaded",
   payload: data,
@@ -13,6 +8,10 @@ const charactersLoaded = (data) => ({
 
 export const fetchCharacters = () => {
   return async (dispatch) => {
+    const GET_CHARACTERS_QUERY_BY_EPISODE = `query 
+    {episode (id: 22) 
+    {id,name,characters {id,name,status,species,gender,image,location {id,name}}}}
+    `;
     try {
       const responseGraphQL = await axios.post(`${apiUrlGraphQl}`, {
         query: GET_CHARACTERS_QUERY_BY_EPISODE,

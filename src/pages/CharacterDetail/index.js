@@ -28,7 +28,7 @@ export default () => {
 
   return (
     <>
-      <Title>Character Detail: {characterDetail.name}</Title>
+      <Title>Character: {characterDetail.name}</Title>
       <WrapperCardCharacter>
         <ImageCharacter
           src={characterDetail.image}

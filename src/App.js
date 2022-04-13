@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import GlobalStyle from "./globalStyles";
 
 import DimensionPage from "./pages/Dimension";
 import Homepage from "./pages/Homepage";
@@ -12,7 +11,6 @@ import NavigationBar from "./components/NavigationBar";
 function App() {
   return (
     <>
-      <GlobalStyle />
       <NavigationBar />
       <Routes>
         <Route path="/" element={<Homepage />} />
