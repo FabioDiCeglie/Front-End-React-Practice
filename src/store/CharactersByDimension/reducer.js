@@ -1,14 +1,11 @@
-const initialState = null;
+const initialState = {
+  dimensions: null,
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case "charactersPage/charactersLoaded": {
       const filterByDimension = action.payload;
-
-      const dimensionName = filterByDimension.map((dimension) => {
-        return dimension.dimension;
-      });
-      const uniqueName = Array.from(new Set(dimensionName));
 
       const charactersByDimension = filterByDimension?.map((character) => {
         return character?.residents?.filter(
@@ -30,7 +27,18 @@ export default (state = initialState, action) => {
         }
       );
 
-      return { dimension: uniqueName, charactersByDimensionAliveLastSeen };
+      return { ...state, charactersByDimensionAliveLastSeen };
+    }
+    case "dimensionPage/dimensionsLoaded": {
+      const dimensions = action.payload;
+      const filterDimensions = dimensions.filter(
+        (dimension) => dimension.dimension !== "unknown"
+      );
+
+      return {
+        ...state,
+        dimensions: filterDimensions,
+      };
     }
     default: {
       return state;

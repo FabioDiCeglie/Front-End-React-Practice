@@ -31,7 +31,7 @@ export default () => {
 
   return (
     <>
-      <Title>{charactersByDimension?.dimension} characters:</Title>
+      <Title>Characters by dimensions:</Title>
       <Wrapper>
         {charactersByDimension?.charactersByDimensionAliveLastSeen?.map(
           (character) => (

@@ -30,7 +30,7 @@ export const fetchCharacters = () => {
 };
 
 const dimensionsLoaded = (data) => ({
-  type: "locationPage/locationsLoaded",
+  type: "dimensionPage/dimensionsLoaded",
   payload: data,
 });
 
