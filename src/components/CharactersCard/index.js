@@ -8,6 +8,7 @@ import {
 export default (props) => {
   const { id, image, name, species, gender, location, episode } =
     props.character;
+
   return (
     <>
       <WrapperCards key={id}>

@@ -22,7 +22,6 @@ export default () => {
   }, [dispatch, episode, fetchCharacters, fetchEpisodes]);
 
   const charactersByEpisode = useSelector(selectCharactersByEpisode);
-  console.log(charactersByEpisode);
   const episodes = useSelector(selectEpisodes);
 
   if (!charactersByEpisode && !episodes) {
