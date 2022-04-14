@@ -45,7 +45,7 @@ export const getLocations = `query
 export const getCharactersByLocations = (location) => {
   return `query 
   {locations (filter: {name:"${location}"}) 
-  {results {name,residents {id,name,status,species,gender,image,episode{id,name,created}}}}}`;
+  {results {name,residents {id,name,status,species,gender,image,episode{id,name,created},location {id,name}}}}}`;
 };
 
 export const getAllEpisodes = (pageNumber) => {
