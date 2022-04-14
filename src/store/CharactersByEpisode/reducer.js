@@ -13,7 +13,19 @@ export default (state = initialState, action) => {
           return char.status === "Alive";
         }
       );
-      return { ...state, charactersByEpisodeAlive };
+      const charactersByEpisodeAliveLastSeen = charactersByEpisodeAlive.map(
+        (character) => {
+          const checkCharacterEpisodes = character.episode.reduce(
+            (prev, current) => {
+              return prev.created > current.created ? prev : current;
+            }
+          );
+
+          return { ...character, episode: checkCharacterEpisodes };
+        }
+      );
+
+      return { ...state, charactersByEpisodeAliveLastSeen };
     }
 
     case "episodePage/episodesLoaded": {

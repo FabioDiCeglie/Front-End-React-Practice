@@ -31,7 +31,7 @@ export const getEpisodes = `query
 export const getCharactersByEpisodes = (episode) => {
   return `query 
   {episode (id:${episode}) 
-  {id,name,characters {id,name,status,species,gender,image,location {id,name}}}}
+  {id,name,characters {id,name,status,species,gender,image,location {id,name},episode{id,name,created}}}}
   `;
 };
 

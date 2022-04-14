@@ -1,7 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 import {
   fetchCharacters,
   fetchEpisodes,
@@ -10,14 +9,8 @@ import {
   selectCharactersByEpisode,
   selectEpisodes,
 } from "../../store/CharactersByEpisode/selectors";
-import {
-  Title,
-  Wrapper,
-  WrapperCards,
-  Image,
-  WrapperCardsDescription,
-  Form,
-} from "../../components/components.style";
+import { Title, Wrapper, Form } from "../../components/components.style";
+import CharactersCard from "../../components/CharactersCard";
 
 export default () => {
   const [episode, setEpisode] = useState(21);
@@ -29,6 +22,7 @@ export default () => {
   }, [dispatch, episode, fetchCharacters, fetchEpisodes]);
 
   const charactersByEpisode = useSelector(selectCharactersByEpisode);
+  console.log(charactersByEpisode);
   const episodes = useSelector(selectEpisodes);
 
   if (!charactersByEpisode && !episodes) {
@@ -53,23 +47,7 @@ export default () => {
 
       <Wrapper>
         {charactersByEpisode?.map((character) => (
-          <WrapperCards key={character.id}>
-            <Image src={character.image} alt={character.name} />
-            <WrapperCardsDescription>
-              <NavLink
-                to={`/character/detail/${character.id}`}
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                <h4>{character.name}</h4>
-              </NavLink>
-              <p>Species: </p>
-              {character.species}
-              <p>Gender: </p>
-              {character.gender}
-              <p>Last known location:</p>
-              {character.location.name}
-            </WrapperCardsDescription>
-          </WrapperCards>
+          <CharactersCard character={character} key={character.id} />
         ))}
       </Wrapper>
     </>
